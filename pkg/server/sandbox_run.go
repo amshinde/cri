@@ -415,6 +415,11 @@ func (c *criService) generateSandboxContainerSpec(id string, config *runtime.Pod
 	g.AddAnnotation(annotations.ContainerType, annotations.ContainerTypeSandbox)
 	g.AddAnnotation(annotations.SandboxID, id)
 
+	if nsOptions.GetIpc() == runtime.NamespaceMode_NODE {
+		g.AddAnnotation(annotations.ShmPath, "/dev/shm")
+	} else {
+		g.AddAnnotation(annotations.ShmPath, c.getSandboxDevShm(id))
+	}
 	return g.Spec(), nil
 }
 

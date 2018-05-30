@@ -35,4 +35,7 @@ const (
 	// UntrustedWorkload is the sandbox annotation for untrusted workload. Untrusted
 	// workload can only run on dedicated runtime for untrusted workload.
 	UntrustedWorkload = "io.kubernetes.cri.untrusted-workload"
+
+	// ShmPath is the shared memory path annotation
+	ShmPath = "io.kubernetes.cri.shm-path"
 )
